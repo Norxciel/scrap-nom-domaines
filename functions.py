@@ -2,6 +2,8 @@
 # --------------------------------------------------------------------------------
 # Imports
 
+import os
+
 import csv
 
 import time
@@ -13,6 +15,10 @@ import tldextract
 import io
 
 from bs4 import BeautifulSoup
+
+import dotenv
+dotenv.load_dotenv()
+
 
 # --------------------------------------------------------------------------------
 # Functions
@@ -316,7 +322,7 @@ def domain_test2(file_data, file_domains_OK, file_domains_KO):
 
       url = "https://api.gandi.net/v5/domain/check"
       querystring = {"name":i}
-      headers = {'authorization': 'Apikey ma_cle_api_gandi'}
+      headers = {f"authorization': 'Apikey  {os.getenv('GANDI_API_KEY')}"}
       response = requests.request("GET", url, headers=headers, params=querystring)
       
       print('Checking {} > {} domains remaining'.format(i, remain))

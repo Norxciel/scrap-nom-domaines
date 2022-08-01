@@ -4,7 +4,8 @@
 
 import time
 from functions import *
-
+import dotenv
+dotenv.load_dotenv()
 
 # --------------------------------------------------------------------------------
 # Variables
